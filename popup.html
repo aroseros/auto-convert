@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convert to USD</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand-mark" aria-hidden="true">$</div>
+      <div>
+        <h1>Convert to USD</h1>
+        <p>Fast reference rates</p>
+      </div>
+    </header>
+
+    <section class="converter" aria-label="Currency converter">
+      <label class="field-label" for="amount">Amount</label>
+      <div class="amount-row">
+        <input id="amount" class="amount-input" type="text" value="100" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="input-help">
+        <select id="currency" class="currency-select" aria-label="Source currency"></select>
+      </div>
+      <span id="input-help" class="sr-only">Enter an amount in the selected source currency</span>
+
+      <div class="direction" aria-hidden="true">
+        <span></span>
+        <span class="direction-pill">to USD</span>
+        <span></span>
+      </div>
+
+      <div class="result-card">
+        <div>
+          <span class="result-label">US Dollar</span>
+          <output id="result" class="result" aria-live="polite">—</output>
+        </div>
+        <button id="copy" class="copy-button" type="button" disabled aria-label="Copy converted amount">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2M6 7h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/></svg>
+          <span id="copy-label">Copy</span>
+        </button>
+      </div>
+
+      <div class="rate-details">
+        <span id="rate">Loading rates…</span>
+        <span id="meta"></span>
+      </div>
+      <p id="error" class="error" role="status"></p>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <strong>Auto-convert pages</strong>
+        <span>Show USD beside detected prices</span>
+      </div>
+      <label class="switch" aria-label="Automatically convert webpage prices">
+        <input id="auto-convert" type="checkbox">
+        <span class="switch-track"><span class="switch-thumb"></span></span>
+      </label>
+    </footer>
+  </main>
+
+  <script src="lib/currencies.js"></script>
+  <script src="lib/formatter.js"></script>
+  <script src="lib/popup-view.js"></script>
+  <script src="lib/injection.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "USD Auto Converter",
+  "short_name": "USD Convert",
+  "version": "1.1.0",
+  "description": "Convert selected currencies to USD and show approximate USD values beside webpage prices.",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.frankfurter.dev/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Convert to USD",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "lib/currencies.js",
+        "lib/formatter.js",
+        "lib/price-parser.js",
+        "lib/split-price.js",
+        "lib/content-logic.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
