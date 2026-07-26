@@ -2,5 +2,10 @@
   "name": "usd-auto-converter",
   "version": "1.1.0",
   "private": true,
-  "description": "Compact Chrome extension that converts supported currencies to USD."
+  "description": "Compact Chrome extension that converts supported currencies to USD.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "validate": "node scripts/validate-extension.mjs",
+    "package": "node scripts/package-extension.mjs"
+  }
 }

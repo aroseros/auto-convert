@@ -30,6 +30,18 @@ EUR, GBP, CAD, AUD, TRY, AED, SAR and JPY. USD is always the target, and IQD is 
 
 Automatic webpage conversion is enabled by default. It works on normal `http://` and `https://` pages, but Chrome does not allow extensions to inject into protected pages such as `chrome://extensions`.
 
+## Development
+
+Use a recent Node.js release, then run:
+
+```bash
+npm test
+npm run validate
+npm run package
+```
+
+`test-page.html` contains static, split-element, excluded and dynamically inserted price examples for browser testing. The packaged extension is written to `dist/usd-auto-converter-v1.1.0.zip`.
+
 ## Privacy
 
 Page text is examined only inside the browser and is never sent to the rate provider. The extension stores preferences and cached exchange rates only. See [PRIVACY.md](PRIVACY.md).

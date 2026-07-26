@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USD Auto Converter Test Page</title>
+  <style>
+    body { max-width: 760px; margin: 40px auto; padding: 0 20px; font: 16px/1.55 system-ui, sans-serif; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { padding: 16px; border: 1px solid #ddd; border-radius: 12px; }
+    code, input { display: block; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Automatic conversion fixture</h1>
+  <div class="grid">
+    <div class="card">Euro item: €120</div>
+    <div class="card"><span>Split euro: €</span><strong>120</strong></div>
+    <div class="card">British item: 85 GBP</div>
+    <div class="card">Canadian item: CA$50</div>
+    <div class="card">Australian item: AUD 75</div>
+    <div class="card">Turkish item: ₺2,000</div>
+    <div class="card">UAE item: AED 300</div>
+    <div class="card">Saudi item: 250 SAR</div>
+    <div class="card">Japanese item: ¥10,000</div>
+  </div>
+
+  <h2>Must remain unchanged</h2>
+  <p>Bare dollar: $100 · USD code: USD 100 · Excluded IQD: IQD 50</p>
+  <input value="EUR 200">
+  <code>GBP 300</code>
+  <p contenteditable="true">Editable EUR 400</p>
+
+  <h2>Dynamic content</h2>
+  <button id="add-price" type="button">Add AED price</button>
+  <div id="dynamic"></div>
+  <script>
+    document.querySelector('#add-price').addEventListener('click', () => {
+      const item = document.createElement('p');
+      item.textContent = `Dynamic item ${Date.now()}: AED 300`;
+      document.querySelector('#dynamic').append(item);
+    });
+  </script>
+</body>
+</html>
